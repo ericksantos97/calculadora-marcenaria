@@ -1,0 +1,49 @@
+<div>
+
+  <mat-grid-list cols="1"
+                 rowHeight="2:1">
+    <mat-grid-tile>
+      <mat-card class="example-card">
+        <mat-card-title>Calcular Valor do Material</mat-card-title>
+        <mat-card-subtitle>Informe os campos abaixo para realizar o cálculo.</mat-card-subtitle>
+        <form #homeForm="ngForm">
+          <mat-card-content>
+            <mat-form-field class="example-full-width"
+                            appearance="fill">
+              <mat-label>Base (Comprimento)</mat-label>
+              <input matInput
+                     placeholder="0 cm"
+                     name="base"
+                     type="number"
+                     min="1"
+                     OnlyNumber="true"
+                     [(ngModel)]="base">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width"
+                            appearance="fill">
+              <mat-label>Altura</mat-label>
+              <input matInput
+                     placeholder="0 cm"
+                     name="height"
+                     type="number"
+                     min="1"
+                     OnlyNumber="true"
+                     [(ngModel)]="height">
+            </mat-form-field>
+
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button
+                    color="primary"
+                    [disabled]="disableButton()"
+                    (click)="calculateSquareMeterPrice(homeForm)">CALCULAR</button>
+            <button mat-raised-button
+                    (click)="resetFields(homeForm)">APAGAR</button>
+          </mat-card-actions>
+        </form>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</div>
