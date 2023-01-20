@@ -1,3 +1,34 @@
 .example-card {
   max-width: 400px;
 }
+
+.flex-container {
+  display: block;
+}
+
+.flex-container>mat-grid-list {
+  padding: 20px;
+  font-size: 30px;
+}
+
+/*Mobile Query */
+@media only screen and (max-width: 480px) {
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+  }
+
+  mat-grid-tile > div .mat-grid-tile-content {
+    position: fixed;
+  }
+}
+
+/*Tablet Query */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
