@@ -11,6 +11,10 @@
   font-size: 30px;
 }
 
+:host::ng-deep mat-form-field {
+  width: 300px;
+}
+
 /*Mobile Query */
 @media only screen and (max-width: 480px) {
   .flex-container {
@@ -20,8 +24,9 @@
     margin: auto;
   }
 
-  mat-grid-tile > div .mat-grid-tile-content {
+  :host::ng-deep mat-grid-tile>div {
     position: fixed;
+    padding: 0 20px;
   }
 }
 

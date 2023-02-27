@@ -10,6 +10,7 @@ import { NgxNumbersOnlyDirectiveModule } from 'ngx-numbers-only-directive';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatGridListModule,
     MatButtonModule,
     NgxNumbersOnlyDirectiveModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxSpinnerModule
   ],
   providers: []
 })
