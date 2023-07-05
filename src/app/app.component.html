@@ -1,3 +1,42 @@
-<div class="bg-gradient">
+<!-- <div class="bg-gradient">
   <router-outlet></router-outlet>
-</div>
+</div> -->
+
+<h1>Teste do Componente SearchBar</h1>
+
+<form class="example-form">
+  <mat-form-field class="example-full-width"
+                  floatLabel="never">
+    <mat-label>Busque</mat-label>
+    <div class="search-bar">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input type="text"
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="auto">
+    </div>
+    <mat-autocomplete #auto="matAutocomplete"
+                      [displayWith]="displayFn">
+      <mat-option *ngFor="let option of filteredOptions | async; let first = first"
+                  [value]="option">
+        <table class="user-table">
+          <tr *ngIf="first"
+              [ngClass]="{'first-row': first}">
+            <th>Nome do Cliente</th>
+            <th>CPF/CNPJ</th>
+            <th>Código da Carteira</th>
+            <th>Nome da Carteira</th>
+            <th>Data</th>
+          </tr>
+          <tr>
+            <td>{{ option.nome }}</td>
+            <td>{{ option.cpf }}</td>
+            <td>{{ option.codigoCarteira }}</td>
+            <td>{{ option.nomeCarteira }}</td>
+            <td>{{ option.data }}</td>
+          </tr>
+        </table>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
