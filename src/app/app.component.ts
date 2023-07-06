@@ -20,8 +20,16 @@ export class AppComponent {
   title = 'calculadora-marcenaria';
 
   myControl = new FormControl('');
+  private tableHeader: User = {
+    nome: 'Nome do Cliente',
+    cpf: 'CPF/CNPJ',
+    codigoCarteira: 'Código da Carteira',
+    nomeCarteira: 'Nome da Carteira',
+    data: 'Data'
+  };
+
   options: User[] = [
-    { nome: 'Carlos1', cpf: '45612378903', codigoCarteira: '003', nomeCarteira: 'Carteira 3', data: '10/03/2023' },
+    { nome: 'Carlos1 Teste Nome Muito Grande', cpf: '45612378903', codigoCarteira: '003', nomeCarteira: 'Carteira 3', data: '10/03/2023' },
     { nome: 'Carlos2', cpf: '45612378903', codigoCarteira: '003', nomeCarteira: 'Carteira 3', data: '10/03/2023' },
     { nome: 'Carlos3', cpf: '45612378903', codigoCarteira: '003', nomeCarteira: 'Carteira 3', data: '10/03/2023' },
     { nome: 'Carlos4', cpf: '45612378903', codigoCarteira: '003', nomeCarteira: 'Carteira 3', data: '10/03/2023' },
@@ -36,6 +44,7 @@ export class AppComponent {
     { nome: 'Carlos13', cpf: '45612378903', codigoCarteira: '003', nomeCarteira: 'Carteira 3', data: '10/03/2023' },
   ];
   filteredOptions!: Observable<User[]>;
+  filteredOptionsLength: number = 0;
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -47,14 +56,19 @@ export class AppComponent {
 
         if (inputValue && inputValue.length >= 3) {
           const filterValue = inputValue.toLowerCase();
-          const filteredItems = this.options.filter((option: User) =>
+          let filteredItems = this.options.filter((option: User) =>
             option.nome.toLowerCase().includes(filterValue)
           );
-          return filteredItems.slice(0, 10).map((item, index) => ({
+          filteredItems.unshift(this.tableHeader);
+
+          this.filteredOptionsLength = filteredItems.length;
+
+          return filteredItems.slice(0, 11).map((item, index) => ({
             ...item,
             isLastOption: index === filteredItems.length - 1
           }));
         } else {
+          this.filteredOptionsLength = 0;
           return [];
         }
       })
